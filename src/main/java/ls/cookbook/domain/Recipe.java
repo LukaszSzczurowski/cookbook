@@ -14,6 +14,10 @@ public class Recipe {
         this.url = url;
     }
 
+    public Recipe() {
+
+    }
+
     public String getUrl() {
         return url;
     }
