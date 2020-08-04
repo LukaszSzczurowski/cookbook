@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Książka kuchrska</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+
+<body style="padding: 0 100px; background: antiquewhite">
+
+    <header style="background: wheat; display: flex" >
+        <h1>Blog kulinarny U Janusza</h1>
+        <img src="janusz.jpg" style="border-radius: 50%;"/>
+    </header>
+
+    <nav>
+       <h3>
+           <a href="/">powrót do strony głównej</a>
+       </h3>
+    </nav>
+
+    <main style="margin-top: 26px; text-align: center">
+        <h2 th:text="${mode == 'edit' ? 'Edytuj przepis' : 'Dodaj nowy przepis'}"></h2>
+        <section style="margin-top: 26px">
+            <form th:action="${mode == 'edit' ? '/edytuj' : '/save'}" method="post" th:object="${newRecipe}" class="form-group">
+                <label>
+                    <input type="text" th:field="*{recipeTitle}" placeholder="podaj tytuł przepisu"><br />
+                </label>
+
+                <textarea th:field="*{recipeDescription}" style="width: 100%;height: 400px" placeholder="podaj z czego i jak go wykonać"></textarea><br />
+
+                <select th:field="*{category}">
+                    <option value="" selected>Wybierz...</option>
+                    <option value="MEALS">drugie dania</option>
+                    <option value="SOUPS">Zupy</option>
+                    <option value="DESSERTS">Desery</option>
+                </select>
+
+                <label>
+                    <input type="text" th:field="*{url}" placeholder="wklej adres do obrazu"><br />
+                </label>
+
+                <button type="submit">Zapisz</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+
+    </footer>
+
+</body>
+</html>
