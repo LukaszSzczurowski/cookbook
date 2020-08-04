@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Książka kuchrska</title>
+</head>
+<body style="padding: 100px">
+
+    <header style="display: flex; justify-content: space-between">
+        <h1>Blog kulinarny U Janusza</h1>
+        <img src="janusz.jpg" />
+    </header>
+
+    <nav>
+        Kategorie:
+        <a href="/home">Wszystkie</a>
+        <a href="/home?kategoria=MEALS">Drugie dania</a>
+        <a href="/home?kategoria=SOUPS">Zupy</a>
+        <a href="/home?kategoria=DESSERTS">Desery</a>
+    </nav>
+
+    <main>
+        <h2>Aktualne przepisy</h2>
+        <section>
+            <a th:href="@{'/recipe?title=' + ${reci.getRecipeTitle()}}" th:each="reci:${recipe}" style="display: flex;">
+
+                <img style="width: 300px; min-height: 300px" th:src="${reci.getUrl()}">
+
+                <div style="margin-left: 20px;">
+                    <h2 th:text="${reci.getRecipeTitle()}"></h2>
+                    <p th:text="${reci.getRecipeDescription()}"></p>
+                </div>
+            </a>
+        </section>
+    </main>
+    <footer>
+
+    </footer>
+
+</body>
+</html>
