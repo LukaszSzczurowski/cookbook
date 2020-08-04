@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Repository
 public class CookbookRepository {
@@ -45,5 +46,21 @@ public class CookbookRepository {
 
     public void saveRecipe(Recipe recipe) {
         cookbook.add(recipe);
+    }
+
+
+    public void update(Recipe recipe) {
+        Recipe recipeFromForm = getRecipe(recipe.getRecipeTitle());
+        recipeFromForm.setRecipeTitle(recipe.getRecipeTitle());
+        recipeFromForm.setRecipeDescription(recipe.getRecipeDescription());
+        recipeFromForm.setCategory(recipe.getCategory());
+        recipeFromForm.setUrl(recipe.getUrl());
+    }
+
+    public List<Recipe> findByTitleContains(String searchText) {
+        return cookbook.stream()
+                                .filter(recipe -> recipe.getRecipeTitle().toUpperCase().contains(searchText.toUpperCase()))
+                                .collect(Collectors.toList());
+
     }
 }

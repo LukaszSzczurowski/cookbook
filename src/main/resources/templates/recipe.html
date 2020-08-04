@@ -25,6 +25,7 @@
             <img th:src="${recipe.getUrl()}">
             <p th:text="${recipe.getRecipeDescription()}"></p>
         </section>
+        <a th:href= "@{'/edit?title=' + ${recipe.getRecipeTitle()}}">Edytuj przepis</a>
     </main>
 
     <footer>

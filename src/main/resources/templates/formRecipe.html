@@ -20,9 +20,9 @@
     </nav>
 
     <main style="margin-top: 26px; text-align: center">
-        <h2>Dodaj nowy przepis</h2>
+        <h2 th:text="${mode == 'edit' ? 'Edytuj przepis' : 'Dodaj nowy przepis'}"></h2>
         <section style="margin-top: 26px">
-            <form th:action="@{/save}" method="post" th:object="${newRecipe}" class="form-group">
+            <form th:action="${mode == 'edit' ? '/edytuj' : '/save'}" method="post" th:object="${newRecipe}" class="form-group">
                 <label>
                     <input type="text" th:field="*{recipeTitle}" placeholder="podaj tytuł przepisu"><br />
                 </label>
