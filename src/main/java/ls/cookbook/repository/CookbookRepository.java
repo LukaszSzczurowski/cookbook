@@ -32,4 +32,12 @@ public class CookbookRepository {
     public Set<Recipe> findAll() {
         return cookbook;
     }
+
+    public Recipe getRecipe(String recipeTitle) {
+        for (Recipe recipe : cookbook) {
+            if (recipe.getRecipeTitle().equals(recipeTitle))
+                return recipe;
+        }
+        return null;
+    }
 }

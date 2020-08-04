@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Książka kuchrska</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+
+<body style="padding: 0 100px">
+
+    <header style="background: wheat" >
+        <h1>Blog kulinarny U Janusza</h1>
+        <img src="janusz.jpg" style="border-radius: 50%;"/>
+    </header>
+
+    <nav>
+       <h3>
+           <a href="/">powrót do strony głównej</a>
+       </h3>
+    </nav>
+
+    <main style="margin-top: 26px">
+        <h2 th:text="${recipe.getRecipeTitle()}"></h2>
+        <section>
+            <img th:src="${recipe.getUrl()}">
+            <p th:text="${recipe.getRecipeDescription()}"></p>
+        </section>
+    </main>
+
+    <footer>
+
+    </footer>
+
+</body>
+</html>

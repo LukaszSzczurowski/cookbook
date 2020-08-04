@@ -33,4 +33,17 @@ public class CookbookController {
             return "home";
         }
     }
+
+    @GetMapping("/recipe")
+    String showAnimal(@RequestParam(name = "title") String recipeTitle, Model model) {
+        Recipe recipe = cookbookRepository.getRecipe(recipeTitle);
+
+        if (recipe != null) {
+            model.addAttribute("recipe", recipe);
+            return "recipe";
+        } else {
+            return "redirect:/";
+        }
+
+    }
 }
